@@ -1,0 +1,60 @@
+-Apache Tomcat ou apenas Tomcat é um servidor web em Java
+-Tomcat entende o protocolo HTTP e roda por padrão no http://localhost:8080
+-O projeto Java faz parte da URL, no nosso caso: http://localhost:8080/gerenciador
+-Uma aplicação web Java pode ter páginas HTML
+-Uma servlet é um objeto Java que podemos chamar a partir de uma requisição HTTP
+-Para mapear a URL para uma servlet usamos a anotação @WebServlet
+-Uma servlet deve estender a classe HttpServlet e sobrescrever um determinado método 
+(por exemplo service, doPost/doGet...)
+
+-escrever uma servlet que atende apenas GET ou POST (doPost/doGet)
+-ler parâmetros da requisição dentro da servlet (parametro recebido no form pegado com getParameter)
+-criar um formulário HTML usando as tags form e input
+-enviando os dados pelo formulário através do POST
+-diferença entre GET e POST
+
+-O modelo ou domínio são as classes que representam o mundo real, aquilo que o cliente 
+ou usuário da aplicação define. Para descobrir quais são as classes e funcionalidades 
+do modelo o analista de requisitos conversa com o cliente e documenta cada funcionalidade.
+
+-JSP significa Java Server Pages
+-JSP é uma página automaticamente processada pelo Tomcat
+-Para gerar HTML dinamicamente no JSP usamos Scriptlets
+-Um scriptlet <% %> é um código Java dentro do HTML
+-Um scriptlet só funciona em uma página JSP
+-Usamos o RequestDispatcher para chamar um JSP a partir da servlet
+-Obtemos o RequestDispatcher a partir do HttpServletRequest
+-Usamos a requisição para colocar ou pegar um atributo (setAttribute(.., ..) ou getAttribute(..))
+
+-Expression Language (EL) é uma linguagem simples e limitada para imprimir o resultado de uma expressão
+-EL usa a sintaxe de ${ .. }
+-JSTL é a biblioteca padrão de tags
+-JSTL não vem com Tomcat e precisamos copiar um JAR
+-JSTL define 4 taglibs, as mais importantes são core e fmt
+-a taglib core serve para controle de fluxo, fmt para formatação
+-é preciso importar as taglib, core e fmt separadamente:
+-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>COPIAR CÓDIGO
+-JSTL e EL devem ser usados em conjunto
+-vimos várias tags do core como c:if, c:forEach e c:url
+-da fmt vimos a tag fmt:formatDate
+-JARs ficam na pasta WEB-INF/lib do projeto
+
+-Existem duas formas de enviar um parâmetro: dentro de uma requisição do método POST, 
+quando possuímos um formulário, ou dentro da URL visível no navegador.
+
+- CRUD: read, read/retrieve, update, delete
+
+-para redirecionar pelo navegador usamos o método response.sendRedirect("endereço")
+
+-Inversão de controle significa que não é meu método main que instancia objetos, 
+quem se preocupa com a criação das instâncias é o Tomcat.
+
+-O Tomcat só irá instanciar as servlets de acordo com a necessidade
+Além disso, ele instanciará apenas uma servlet de cada (singleton).
+A anotação @WebServlet possui um atributo loadOnStartup que muda esse comportamento
+
+-WAR é o ZIP de projetos Java Web, que você roda de dentro de um servidor como o Tomcat. 
+(possui os arquivos do mundo web como imagens, CSS, JS, JSP e HTML.)
+
+-JAR é o ZIP para projetos comuns, que não são Web.
