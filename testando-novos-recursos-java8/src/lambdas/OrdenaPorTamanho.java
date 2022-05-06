@@ -1,5 +1,7 @@
+package lambdas;
+
 import java.util.Comparator;
-//Interface que foi transformada em labda na Aula01
+//Interface que foi transformada em labda na lambdas.Aula01
 public class OrdenaPorTamanho implements Comparator<String> {
 
     @Override
