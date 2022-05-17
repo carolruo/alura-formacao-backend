@@ -1,0 +1,76 @@
+package br.com.alura.gerenciador.servlet;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import br.com.alura.gerenciador.acao.Acao;
+import br.com.alura.gerenciador.acao.AlteraEmpresa;
+import br.com.alura.gerenciador.acao.ListaEmpresas;
+import br.com.alura.gerenciador.acao.MostraEmpresa;
+import br.com.alura.gerenciador.acao.NovaEmpresa;
+import br.com.alura.gerenciador.acao.NovaEmpresaForm;
+import br.com.alura.gerenciador.acao.RemoveEmpresa;
+
+//A função do controlador é receber as requisições e delegar as chamadas para as ações correspondentes
+
+@WebServlet("/entrada")
+public class UnicaEntradaServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String paramAcao = request.getParameter("acao");
+		
+		String jsp;
+		try {
+			String nomeDaClasse = "br.com.alura.gerenciador.acao." + paramAcao;
+			Class classe = Class.forName(nomeDaClasse); //carrega a classe com o nome
+			Acao acao = (Acao) classe.newInstance();
+			jsp = acao.executa(request, response);
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+			throw new ServletException(e);
+		}
+		
+		String[] tipoEndereco = jsp.split(":");
+		
+		if (tipoEndereco[0].equals("forward")) {
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + tipoEndereco[1]);
+			rd.forward(request, response);
+		} else {
+			response.sendRedirect(tipoEndereco[1]);
+		}
+//		if (paramAcao.equals("ListaEmpresas")) {
+//			ListaEmpresas acao = new ListaEmpresas();
+//			jsp = acao.executa(request, response);
+//			
+//		} else if (paramAcao.equals("RemoveEmpresa")) {
+//			RemoveEmpresa acao = new RemoveEmpresa();
+//			jsp = acao.executa(request, response);
+//			
+//		} else if (paramAcao.equals("MostraEmpresa")) {
+//			MostraEmpresa acao = new MostraEmpresa();
+//			jsp = acao.executa(request, response);
+//			
+//		} else if (paramAcao.equals("AlteraEmpresa")) {
+//			AlteraEmpresa acao = new AlteraEmpresa();
+//			jsp = acao.executa(request, response);
+//			
+//		} else if (paramAcao.equals("NovaEmpresa")) {
+//			NovaEmpresa acao = new NovaEmpresa();
+//			jsp = acao.executa(request, response);
+//			
+//		} else if (paramAcao.equals("NovaEmpresaForm")) {
+//			NovaEmpresaForm acao = new NovaEmpresaForm();
+//			jsp = acao.executa(request, response);
+//		}
+//		
+		
+		
+	}
+}

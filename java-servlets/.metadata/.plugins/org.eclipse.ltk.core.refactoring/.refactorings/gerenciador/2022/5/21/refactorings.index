@@ -1,0 +1,16 @@
+1652793924124	Move compilation unit
+1652797390291	Rename type 'AlterarEmpresa'
+1652797401486	Rename type 'ListaEmpresas'
+1652797412268	Rename type 'MostrarEmpresa'
+1652797422670	Rename type 'NovaEmpresa'
+1652797436566	Rename type 'RemoverEmpresa'
+1652798471845	Copy compilation unit
+1652799278867	Copy compilation unit
+1652799734458	Copy compilation unit
+1652800229097	Delete elements
+1652812429839	Move 'formAlterarEmpresa.jsp' to 'view'
+1652812432741	Move 'formNovaEmpresa.jsp' to 'view'
+1652812434926	Move 'listaEmpresas.jsp' to 'view'
+1652812436793	Move 'novaEmpresa.jsp' to 'view'
+1652812635509	Copy compilation unit
+1652821205718	Delete element

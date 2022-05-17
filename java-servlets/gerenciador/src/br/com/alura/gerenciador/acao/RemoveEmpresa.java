@@ -1,0 +1,26 @@
+package br.com.alura.gerenciador.acao;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import br.com.alura.gerenciador.modelo.BancoDeDados;
+
+public class RemoveEmpresa implements Acao{
+	
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("removendo empresa chamando executa");
+		
+		String paramId = request.getParameter("id");
+		Integer id = Integer.valueOf(paramId);
+		
+		BancoDeDados banco = new BancoDeDados();
+		banco.removerEmpresa(id);
+		
+		return "redirect:entrada?acao=ListaEmpresas";
+	}
+
+}

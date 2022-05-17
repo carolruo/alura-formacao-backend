@@ -58,3 +58,12 @@ A anotação @WebServlet possui um atributo loadOnStartup que muda esse comporta
 (possui os arquivos do mundo web como imagens, CSS, JS, JSP e HTML.)
 
 -JAR é o ZIP para projetos comuns, que não são Web.
+
+-MVC significa Model-View-Controller
+-MVC divide a aplicação em 3 camadas lógicas
+-Cada camada tem a sua responsabilidade
+-O controlador central e as ações fazem parte da camada Controller, que define o fluxo da aplicação
+-Os JSPs fazem parte da camada View, que define a interface
+-As classes do modelo fazem parte da camada Model, que encapsula as regras de negócio
+-MVC facilita a manutenção e evolução da aplicação
+-Os JSPs devem ficar "escondidos" na pasta WEB-INF, pois dependem da ação

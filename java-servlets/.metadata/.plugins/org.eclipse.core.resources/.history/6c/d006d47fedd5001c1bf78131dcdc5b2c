@@ -1,0 +1,21 @@
+package br.com.alura.gerenciador.acao;
+
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+
+import br.com.alura.gerenciador.modelo.BancoDeDados;
+import br.com.alura.gerenciador.modelo.Empresa;
+
+public class ListaEmpresas {
+	
+	public void executa() {
+		BancoDeDados banco = new BancoDeDados();
+        List<Empresa> lista = banco.getEmpresas();
+
+        request.setAttribute("empresas", lista);
+
+        RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
+        rd.forward(request, response);  
+	}
+}
