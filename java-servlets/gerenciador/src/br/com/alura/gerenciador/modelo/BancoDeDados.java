@@ -7,6 +7,7 @@ import java.util.List;
 public class BancoDeDados {
 	
 	private static List<Empresa> listaEmpresas = new ArrayList<>();
+	private static List<Usuario> listaUsuarios = new ArrayList<>();
 	//simular uma chave sequencial no banco de dados:
 	private static Integer chaveSequencial = 1;
 	
@@ -20,6 +21,16 @@ public class BancoDeDados {
 		
 		listaEmpresas.add(empresa1);
 		listaEmpresas.add(empresa2);
+		
+		Usuario user1 = new Usuario();
+		user1.setLogin("nico");
+		user1.setSenha("12345");
+		Usuario user2 = new Usuario();
+		user2.setLogin("ana");
+		user2.setSenha("12345");
+		
+		listaUsuarios.add(user1);
+		listaUsuarios.add(user2);
 	}
 
 	public void adiciona(Empresa empresa) {
@@ -51,6 +62,15 @@ public class BancoDeDados {
 	        }
 	    }
 	    return null;
+	}
+
+	public Usuario existeUsuario(String login, String senha) {
+		for (Usuario usuario : listaUsuarios) {
+			if(usuario.ehIgual(login, senha) ) {
+				return usuario;
+			}
+		}
+		return null;
 	}
 
 }

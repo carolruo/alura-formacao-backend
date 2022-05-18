@@ -10,7 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	
+	Usuario logado: ${usuarioLogado.login} <br />
+	
 		<c:if test="${not empty empresa}">
 			Empresa ${empresa} cadastrada com sucesso!
 		</c:if>
@@ -21,9 +23,10 @@
     	<c:forEach items="${empresas}" var="empresa">
     		<li>${empresa.nome} - <fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>
     		<a href="entrada?acao=RemoveEmpresa&id=${empresa.id}">Remover</a>
-    		<a href="entrada?acao=MostraEmpresa&id=${empresa.id}">Alterar</a>
+    		<a href="entrada?acao=AlteraEmpresaForm&id=${empresa.id}">Alterar</a>
     		</li>
     	</c:forEach>
     </ul>
+    <a href="entrada?acao=NovaEmpresaForm">Adicionar empresa</a>
 </body>
 </html>
