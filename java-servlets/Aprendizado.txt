@@ -82,3 +82,27 @@ A anotação @WebServlet possui um atributo loadOnStartup que muda esse comporta
 
 **Anotações não nos permitem definir a ordem dos filtros, para isso precisamos utilizar o web.xml. 
 Ou seja, quando precisamos definir uma ordem de aplicação dos filtros, devemos optar pelo uso do web.xml.
+
+-Um Filter e Servlet são bem parecidos
+-Comparado com Servlet, o Filter tem o poder de parar o fluxo
+-Para escrever um filtro, devemos implementar a interface javax.servlet.Filter
+-Para mapear o filtro, usamos a anotação @WebFilter ou o web.xml
+-Vários filtros podem funcionar numa cadeia (um chama o próximo, mas todos são independentes)
+-Para definir a ordem de execução, devemos mapear os filtros no web.xml
+-Um filtro recebe como parâmetro, do método doFilter, um ServletRequest e um ServletResponse
+-Ambos, ServletRequest e ServletResponse, são interfaces mais genéricas do que HttpServletRequest e HttpServletResponse
+-Para chamar o próximo filtro na cadeia, usamos o objeto FilterChain
+
+**Quando falamos de web services, temos que dar suporte aos vários tipos de clientes, não apenas navegadores. 
+Como o HTML possui toda estrutura da página, vêm muitas informações que talvez não sejam necessários para o cliente.
+
+-um web service usa HTML, JSON ou XML como retorno
+-um web service oferece alguma funcionalidade para seu cliente
+-um web service é útil quando precisa oferecer uma funcionalidade para cliente diferentes
+-para o web service não importa se o cliente foi escrito em Java, C# ou outra linguagem, 
+pois usamos um protocolo e formatos independentes da plataforma
+-Como gerar JSON no código Java através de GSON
+-Como gerar XML no código Java através de XStream
+-Como escrever um web service através de um HttpServlet
+-Como criar um cliente HTTP a partir do código Java, usando a biblioteca Apache HttpClient
+-Como gerar JSON ou XML a partir do cabeçalho Accept da requisição
