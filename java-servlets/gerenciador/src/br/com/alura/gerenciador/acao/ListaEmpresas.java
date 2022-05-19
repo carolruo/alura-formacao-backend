@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import br.com.alura.gerenciador.modelo.BancoDeDados;
 import br.com.alura.gerenciador.modelo.Empresa;
@@ -19,16 +18,15 @@ public class ListaEmpresas implements Acao{
 		
 		System.out.println("listando empresa chamando executa");
 		
-		HttpSession sessao = request.getSession();
-		if (sessao.getAttribute("usuarioLogado") == null) {
-			return "redirect:entrada?acao=LoginForm";
-		}
+		
 		
 		BancoDeDados banco = new BancoDeDados();
         List<Empresa> lista = banco.getEmpresas();
 
         request.setAttribute("empresas", lista);
-
+        
+        
+        
         return "forward:listaEmpresas.jsp";
 	}
 }

@@ -67,3 +67,18 @@ A anotação @WebServlet possui um atributo loadOnStartup que muda esse comporta
 -As classes do modelo fazem parte da camada Model, que encapsula as regras de negócio
 -MVC facilita a manutenção e evolução da aplicação
 -Os JSPs devem ficar "escondidos" na pasta WEB-INF, pois dependem da ação
+
+-Por padrão, o navegador não envia nenhuma identificação sobre o usuário
+-Quando o Tomcat recebe uma nova requisição (sem identificação), gerará um ID
+-O ID fica salvo no cookie de nome JSessionID
+-O ID é um hash (número aleatório)
+-O cookie é anexado à resposta HTTP
+-O navegador reenvia o cookie automaticamente nas próximas requisições
+-O Tomcat gera, além do ID, um objeto chamado HttpSession
+-A vida do objeto HttpSession fica atrelado ao ID
+-Para ter acesso à HttpSession, basta chamar request.getSession()
+-Usamos a HttpSession para guardar dados sobre o usuário (login, permissões, carrinho de compra)
+-A HttpSession tem um ciclo de vida e será automaticamente invalidada
+
+**Anotações não nos permitem definir a ordem dos filtros, para isso precisamos utilizar o web.xml. 
+Ou seja, quando precisamos definir uma ordem de aplicação dos filtros, devemos optar pelo uso do web.xml.

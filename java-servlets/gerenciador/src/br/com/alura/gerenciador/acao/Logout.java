@@ -15,6 +15,9 @@ public class Logout implements Acao {
 		
 		HttpSession sessao = request.getSession();
 //		sessao.removeAttribute("usuarioLogado");
+//		//Quando utilizamos o removeAtribute, nosso objeto HttpSession ainda 
+//		continua em memória (o cookie também continua lá). Já quando usamos o invalidate, 
+//		ele remove o objeto HttpSession, todos os objetos associados e também remove o cookie!
 		sessao.invalidate();
 		
 		return "redirect:entrada?acao=LoginForm";
