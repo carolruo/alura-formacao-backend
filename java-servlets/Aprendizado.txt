@@ -106,3 +106,9 @@ pois usamos um protocolo e formatos independentes da plataforma
 -Como escrever um web service através de um HttpServlet
 -Como criar um cliente HTTP a partir do código Java, usando a biblioteca Apache HttpClient
 -Como gerar JSON ou XML a partir do cabeçalho Accept da requisição
+
+-disponibilizando a nossa aplicação no servlet container Jetty
+-Servlet é uma especificação
+-a especificação Servlet faz parte do Java EE/Jakarta EE
+-ao usar Servlet, programamos independentemente do servidor/container
+-A diferença entre servlet container e application server
