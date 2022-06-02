@@ -4,9 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-//essa classe ta mapeando uma tabela de produto no banco de dados
 @Entity
-//linking o nome da tabela no banco (produtos) com o nome da classe (Produto)
 @Table(name = "produtos")
 public class Produto {
 

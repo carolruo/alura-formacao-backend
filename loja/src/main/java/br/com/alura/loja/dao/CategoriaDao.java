@@ -3,7 +3,7 @@ package br.com.alura.loja.dao;
 import br.com.alura.loja.modelo.Categoria;
 
 import javax.persistence.EntityManager;
-
+//ISOLAR O CODIGO DE ACESSO AO BANCO DE DADOS
 public class CategoriaDao {
 
     private EntityManager em;
