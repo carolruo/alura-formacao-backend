@@ -10,6 +10,7 @@ import br.com.alura.loja.vo.RelatorioDeVendasVo;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 public class CadastroDePedido {
@@ -37,6 +38,8 @@ public class CadastroDePedido {
 
         List<RelatorioDeVendasVo> relatorio = pedidoDao.relatorioDeVendas();
         relatorio.forEach(System.out::println);
+
+        produtoDao.buscarPorParametrosComCriteria("Samsung Galaxy", null, LocalDate.now());
 
 
     }
