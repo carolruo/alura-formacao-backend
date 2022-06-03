@@ -6,6 +6,8 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "produtos")
+//Criando uma consulta dentro da entidade ao inves da classe Dao:
+@NamedQuery(name = "Produto.produtosPorCategoria", query = "SELECT p FROM Produto p WHERE p.categoria.nome = :nome")
 public class Produto {
 
     //indicar que o atributo abaixo é a chave primaria
