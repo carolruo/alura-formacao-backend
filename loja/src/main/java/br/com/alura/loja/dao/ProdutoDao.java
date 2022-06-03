@@ -31,6 +31,10 @@ public class ProdutoDao {
                 .getSingleResult();
     }
 
+    public Produto buscarProdutoPorId(Long id) {
+        return em.find(Produto.class, id);
+    }
+
     public List<Produto> buscarTodos() {
         String jpql = "SELECT p FROM Produto p"; //Produto AS p (o objeto inteiro)
         //O createQuery não dispara a query no banco de dados, apenas monta a query, para disparar, chamamos o getResultList
