@@ -9,12 +9,11 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String cpf;
+    @Embedded //Os atributos de DadosPessoais são embutidos nas colunas na entidade Cliente no banco de dados
+    private DadosPessoais dadosPessoais;
 
     public Cliente(String nome, String cpf) {
-        this.nome = nome;
-        this.cpf = cpf;
+        this.dadosPessoais = new DadosPessoais(nome, cpf);
     }
 
     public Cliente() {
@@ -29,18 +28,14 @@ public class Cliente {
     }
 
     public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+        return dadosPessoais.getNome();
     }
 
     public String getCpf() {
-        return cpf;
+        return dadosPessoais.getCpf();
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public DadosPessoais getDadosPessoais() {
+        return dadosPessoais;
     }
 }
