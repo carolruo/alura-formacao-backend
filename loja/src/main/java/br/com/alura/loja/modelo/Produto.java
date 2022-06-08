@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Table(name = "produtos")
 //Criando uma consulta dentro da entidade ao inves da classe Dao:
 @NamedQuery(name = "Produto.produtosPorCategoria", query = "SELECT p FROM Produto p WHERE p.categoria.nome = :nome")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) //Indicar herança e escolher a estrategia de armazenamento de tabelas
 public class Produto {
 
     //indicar que o atributo abaixo é a chave primaria

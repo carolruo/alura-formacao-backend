@@ -6,28 +6,26 @@ import javax.persistence.*;
 @Table(name = "categorias")
 public class Categoria {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nome;
+    @EmbeddedId
+    private CategoriaId id;
 
     //é uma exigencia da JPA ter um construtor default nas entidades (merge())
     public Categoria() {
     }
 
     public Categoria(String nome) {
-        this.nome = nome;
+        this.id = new CategoriaId(nome, "xpto");
     }
 
     public String getNome() {
-        return nome;
+        return this.id.getNome();
     }
 
     @Override
     public String toString() {
         return "Categoria{" +
                 "id=" + id +
-                ", nome='" + nome + '\'' +
+                ", nome='" + id.getNome() + '\'' +
                 '}';
     }
 }
